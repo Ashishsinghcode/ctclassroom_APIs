@@ -23,14 +23,18 @@ function login(req,res){
             {
                 const payload ={
                     'id':userdata._id,
-                    'email':userdata.email
+                    'email':userdata.email,
+                    'name':userdata.name
                 }
                 const token = jwt.sign(payload,privatekey,{expiresIn:60*20})
                 res.json({
                     'status':200,
                     'success':true,
                     'message':'Login Successfully',
-                    'token':token
+                    'token':token,
+                    'name':userdata.name,
+                    'email':userdata.email
+
                 })    
             }else{
                 res.json({

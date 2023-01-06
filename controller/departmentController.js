@@ -20,7 +20,7 @@ function add_department(req,res){
     }
     else {
 
-        Department.findOne({'department_name':req.body.department_name}).exec()
+        Department.findOne({'department_id':req.body.department_id.toUpperCase()}).exec()
 
         .then((data)=>{
             if(data == null){

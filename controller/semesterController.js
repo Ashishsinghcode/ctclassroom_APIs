@@ -28,9 +28,9 @@ function add_semester(req,res){
         .then(departmentdata=>{
                 Course.findOne({'_id':req.body.course_id}).exec()
                 .then(coursedata=>{
-                    Semester.findOne({'semester_name':req.body.semester_name}).exec()
+                    Semester.findOne({'semester_id':req.body.semester_id.toUpperCase()}).exec()
                     .then(semesterdata=>{
-
+                        
                     if(semesterdata == null){
                         let semesterobj = Semester()
                         semesterobj.department_id = departmentdata._id
@@ -72,7 +72,7 @@ function add_semester(req,res){
 }
 }
 function get_semester(req,res){
-    Semester.find().exec()
+    Semester.find().populate('department_id').populate('course_id').exec()
     .then(semesterdata=>{
         if(semesterdata == null){
             res.json({
@@ -81,6 +81,7 @@ function get_semester(req,res){
                 'msg':'Semester not exists'
             })    
         }else{
+           
             res.json({
                 'status':200,
                 'success':false,
@@ -109,7 +110,7 @@ function delete_semester(req,res){
             'msg':'Please Enter ID'
         })
     }else{
-        console.log(req.params._id)
+        
         Semester.findOne({'_id':req.params._id}).exec()
         .then(semesterdata=>{
             if(semesterdata == null){

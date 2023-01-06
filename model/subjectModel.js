@@ -1,9 +1,9 @@
 const mongo = require('mongoose')
 
 const subjectSchema = mongo.Schema({
-    'dept_id':{type:mongo.Schema.Types.ObjectId, ref:'department', default:''},
+    'department_id':{type:mongo.Schema.Types.ObjectId, ref:'department', default:''},
     'course_id':{type:mongo.Schema.Types.ObjectId, ref:'course', default:''},
-    'semester_id':{type:mongo.Schema.Types.ObjectId, ref:'semeter', default:''},
+    'semester_id':{type:mongo.Schema.Types.ObjectId, ref:'semester', default:''},
     'teacher_id':{type:mongo.Schema.Types.ObjectId, ref:'teacher', default:''},
     'subject_id':{type:String, default:''},
     'subject_name':{type:String, default:''},

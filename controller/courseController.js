@@ -31,7 +31,7 @@ function add_course(req,res){
                     'msg':"Department not found"
                 })
             }else{
-                Course.findOne({'course_name':req.body.course_name}).exec()
+                Course.findOne({'course_id':req.body.course_id.toUpperCase()}).exec()
                 .then(coursedata=>{
                     if(coursedata == null){
                         let courseobj = Course()
@@ -72,7 +72,7 @@ function add_course(req,res){
 }
 }
 function get_course(req,res){
-    Course.find().exec()
+    Course.find().populate('department_id').exec()
     .then(coursedata=>{
         if(coursedata == null){
             res.json({
