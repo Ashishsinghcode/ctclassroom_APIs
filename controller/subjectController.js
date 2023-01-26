@@ -27,7 +27,7 @@ function add_subject(req,res){
     }
     if(!!validators){
         res.json({
-            'status':200,
+            'status':422,
             'success':false,
             'message':validators
         })
@@ -142,8 +142,8 @@ function get_subject(req,res){
     })
 }
 function delete_subject(req,res){
-console.log('hello')
-    if(req.params == null || req.params._id == undefined || req.params._id == ''){
+
+    if(req.body == null || req.body._id == undefined || req.body._id == ''){
         res.json({
             'status':200,
             'success':false,
@@ -151,7 +151,7 @@ console.log('hello')
         })
     }else{
         
-        Subject.findOne({'_id':req.params._id}).exec()
+        Subject.findOne({'_id':req.body._id}).exec()
         .then(subjectdata=>{
             if(subjectdata == null){
                 res.json({
@@ -161,7 +161,7 @@ console.log('hello')
                 })
                 
             }else{
-                Subject.deleteOne({'_id':req.params._id}).exec()
+                Subject.deleteOne({'_id':req.body._id}).exec()
                 res.json({
                     'status':200,
                     'success':true,

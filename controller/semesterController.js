@@ -103,7 +103,7 @@ function delete_semester(req,res){
 
     //console.log(req)
     //console.log(req)
-    if(req.params == null || req.params._id == undefined || req.body._id == ''){
+    if(req.body == null || req.body._id == undefined || req.body._id == ''){
         res.json({
             'status':200,
             'success':false,
@@ -111,7 +111,7 @@ function delete_semester(req,res){
         })
     }else{
         
-        Semester.findOne({'_id':req.params._id}).exec()
+        Semester.findOne({'_id':req.body._id}).exec()
         .then(semesterdata=>{
             if(semesterdata == null){
                 res.json({
@@ -121,7 +121,7 @@ function delete_semester(req,res){
                 })
                 
             }else{
-                Semester.deleteOne({'_id':req.params._id}).exec()
+                Semester.deleteOne({'_id':req.body._id}).exec()
                 res.json({
                     'status':200,
                     'success':true,

@@ -1,5 +1,5 @@
 const Department = require('../model/departmentModel')
-const { param } = require('../route/adminRoutes')
+
 
 function add_department(req,res){
     let validators=''
@@ -88,15 +88,15 @@ function delete_department(req,res){
 
     //console.log(req)
     //console.log(req)
-    if(req.params == null || req.params._id == undefined || req.body._id == ''){
+    if(req.body == null || req.body._id == undefined || req.body._id == ''){
         res.json({
             'status':200,
             'success':false,
             'msg':'Please Enter ID'
         })
     }else{
-        console.log(req.params._id)
-        Department.findOne({'_id':req.params._id}).exec()
+        
+        Department.findOne({'_id':req.body._id}).exec()
         .then(dep_data=>{
             if(dep_data == null){
                 res.json({
@@ -106,12 +106,26 @@ function delete_department(req,res){
                 })
                 
             }else{
-                Department.deleteOne({'_id':req.params._id}).exec()
-                res.json({
-                    'status':200,
-                    'success':true,
-                    'msg':'Department Deleted Successfully'
-                })
+                if(dep_data.is_blocked == "false")
+                {
+                    dep_data.is_blocked = true
+                    dep_data.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Department Deleted Successfully',
+                        'message':'Deleted'
+                    })
+                }else{
+                    dep_data.is_blocked = false
+                    dep_data.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Department Retrived Successfully',
+                        'message':'Retrived'
+                    })
+                }
             }
         })
         .catch(err=>{

@@ -8,9 +8,9 @@ const privatekey= "Ashish@123"
 
 function login(req,res){
 
-    User.findOne({'email':req.body.email}).exec()
+    User.findOne({'email':req.body.email.toUpperCase()}).exec()
     .then(userdata=>{
-       
+      
         if(userdata == null){
             res.json({
                 'status':200,

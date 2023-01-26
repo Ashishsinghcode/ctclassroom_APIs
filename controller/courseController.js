@@ -102,15 +102,15 @@ function delete_course(req,res){
 
     //console.log(req)
     //console.log(req)
-    if(req.params == null || req.params._id == undefined || req.body._id == ''){
+    if(req.body == null || req.body._id == undefined || req.body._id == ''){
         res.json({
             'status':200,
             'success':false,
             'msg':'Please Enter ID'
         })
     }else{
-        console.log(req.params._id)
-        Course.findOne({'_id':req.params._id}).exec()
+        console.log(req.body._id)
+        Course.findOne({'_id':req.body._id}).exec()
         .then(coursedata=>{
             if(coursedata == null){
                 res.json({
@@ -120,7 +120,7 @@ function delete_course(req,res){
                 })
                 
             }else{
-                Course.deleteOne({'_id':req.params._id}).exec()
+                Course.deleteOne({'_id':req.body._id}).exec()
                 res.json({
                     'status':200,
                     'success':true,
