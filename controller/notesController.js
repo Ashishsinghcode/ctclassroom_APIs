@@ -2,6 +2,7 @@ const Notes = require('../model/notesModel')
 const Semester = require('../model/semesterModel')
 
 function add_notes(req,res){
+    
     let validators=''
     if(req.body == null || req.body.title == undefined || req.body.title == '' ){
        validators += 'Title required'
@@ -19,7 +20,7 @@ function add_notes(req,res){
         res.json({
             'status':422,
             'success':false,
-            'msg':validators
+            'message':validators
         })
     }
     else {
@@ -45,7 +46,7 @@ function add_notes(req,res){
                 res.json({
                     'status':500,
                     'success':false,
-                    'msg':String(err)
+                    'message':String(err)
                 })  
             })
            
@@ -59,7 +60,7 @@ function get_notes(req,res){
             res.json({
                 'status':200,
                 'success':false,
-                'Message':'notes not exists'
+                'message':'notes not exists'
             })    
         }else{
             res.json({
@@ -75,7 +76,7 @@ function get_notes(req,res){
         res.json({
             'status':500,
             'success':false,
-            'msg':String(err)
+            'message':String(err)
         })
     })
 }
@@ -87,7 +88,7 @@ function delete_notes(req,res){
         res.json({
             'status':200,
             'success':false,
-            'msg':'Please Enter ID'
+            'message':'Please Enter ID'
         })
     }else{
         
@@ -97,7 +98,7 @@ function delete_notes(req,res){
                 res.json({
                     'status':200,
                     'success':false,
-                    'msg':'notes not exists'
+                    'message':'notes not exists'
                 })
                 
             }else{
@@ -105,7 +106,7 @@ function delete_notes(req,res){
                 res.json({
                     'status':200,
                     'success':true,
-                    'msg':'notes Deleted Successfully'
+                    'message':'notes Deleted Successfully'
                 })
             }
         })
@@ -113,7 +114,7 @@ function delete_notes(req,res){
             res.json({
             'status':500,
             'success':false,
-            'msg':String(err)
+            'message':String(err)
             })
         })
     }

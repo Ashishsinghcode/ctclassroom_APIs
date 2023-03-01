@@ -72,7 +72,8 @@ function add_semester(req,res){
 }
 }
 function get_semester(req,res){
-    Semester.find().populate('department_id').populate('course_id').exec()
+    var mysort ={ semester_name : 1}
+    Semester.find().populate('department_id').populate('course_id').sort(mysort).exec()
     .then(semesterdata=>{
         if(semesterdata == null){
             res.json({

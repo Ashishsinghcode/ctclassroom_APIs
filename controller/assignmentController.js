@@ -30,6 +30,8 @@ function add_assignment(req,res){
                 assignmentobj.title=req.body.title.toUpperCase()
                 assignmentobj.semester_id= semesterdata._id
                 assignmentobj.description=req.body.description.toUpperCase()
+                assignmentobj.assign_date=req.body.assign_date.toUpperCase()
+                assignmentobj.submission_date=req.body.submission_date.toUpperCase()
                 if(req.file){
                     assignmentobj.assignment=req.file.filename 
                 }
@@ -45,7 +47,7 @@ function add_assignment(req,res){
                 res.json({
                     'status':500,
                     'success':false,
-                    'msg':String(err)
+                    'message':String(err)
                 })  
             })
     

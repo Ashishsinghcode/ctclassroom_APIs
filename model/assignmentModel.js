@@ -6,7 +6,7 @@ const assignmentSchema = mongo.Schema({
     'description':{type:String, default:''},
     'assignment':{type:String, default:''},
     'assign_date':{type:String, default:''},
-    'submit_date':{type:String, default:'profile.jpg'},
+    'submission_date':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
     'is_blocked':{type:String, default:false},
     

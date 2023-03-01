@@ -5,7 +5,8 @@ const Lecture = require('../model/lectureModel')
 function add_lecture(req,res){
     let validators =''
    
-    if(req.body == null || req.body._id == undefined || req.body._id == ''){
+    
+    if(req.body == null || req.body.subject_id == undefined || req.body.subject_id == ''){
         validators += 'Subject Id required'
     }
     
@@ -29,13 +30,13 @@ function add_lecture(req,res){
         })
     }else{
        
-                Subject.findOne({'_id':req.body._id}).exec()
+                Subject.findOne({'_id':req.body.subject_id}).exec()
                 .then(subjectdata=>{
-                    console.log(subjectdata)
+                   
                         let lectureobj = Lecture()
                         lectureobj.semester_id= subjectdata.semester_id
                         lectureobj.teacher_id= subjectdata.teacher_id
-                        lectureobj.subject_id= subjectdata._id
+                        lectureobj.subject_id= req.body._id
                         lectureobj.title= req.body.title.toUpperCase()
                         lectureobj.link= req.body.link
                         lectureobj.date= req.body.date
@@ -44,7 +45,7 @@ function add_lecture(req,res){
                         res.json({
                             'status':200,
                             'success':true,
-                            'message':"Lecture added successfully"
+                            'message':"Class added successfully"
                     })
                       
                 })

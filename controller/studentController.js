@@ -54,7 +54,7 @@ function add_student(req,res){
                 }else{
                     Department.findOne({'_id':req.body.department_id}).exec()
                     .then(departmentdata=>{
-                        console.log(departmentdata._id)
+                        
                         Course.findOne({'_id':req.body.course_id}).exec()
                         .then(coursedata=>{
                             Semester.findOne({'_id':req.body.semester_id}).exec()
@@ -210,10 +210,10 @@ function add_student(req,res){
         }else{
             Student.findOne({'_id':req.body._id}).exec()
             .then(studentdata=>{
-                console.log(studentdata)
+                
                     User.findOne({'_id':studentdata.user_id}).exec()
                     .then(userdata=>{
-                        console.log(userdata)
+                        
                         if(userdata== null){
                             res.json({
                                 'status':200,
@@ -222,7 +222,7 @@ function add_student(req,res){
                             }) 
                         }
                         else{
-                            // console.log(req.body)
+                            // s.log(req.body)
                             userdata.email = req.body.email
                             userdata.save()
                             

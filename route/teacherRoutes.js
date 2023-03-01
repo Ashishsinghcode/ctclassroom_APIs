@@ -3,6 +3,7 @@ const notesController =require('../controller/notesController')
 const assignmentController =require('../controller/assignmentController')
 const lectureController =require('../controller/lectureController')
 const testController =require('../controller/testController')
+const attendenceController =require('../controller/attendenceController')
 
 //Notes Upload 
 const multer = require('multer')
@@ -42,7 +43,7 @@ router.post('/add_notes',notes_upload.single('notes'),notesController.add_notes)
 router.get('/get_notes',notesController.get_notes)
 router.post('/delete_notes',notesController.delete_notes)
 
-//Notes API
+//Assignment API
 router.post('/add_assignment',assignment_upload.single('assignment'),assignmentController.add_assignment)
 router.get('/get_assignment',assignmentController.get_assignment)
 router.post('/delete_assignment',assignmentController.delete_assignment)
@@ -57,7 +58,8 @@ router.post('/add_test',testController.add_test)
 router.get('/get_test',testController.get_test)
 router.post('/delete_test',testController.delete_test)
 
-
+// Attendence
+router.post('/get_student_list',attendenceController.get_student_list)
 
 
 
