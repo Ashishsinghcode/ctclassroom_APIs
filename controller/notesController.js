@@ -48,8 +48,7 @@ function add_notes(req,res){
                     'msg':String(err)
                 })  
             })
-    
-                   
+           
         }
     }
 
