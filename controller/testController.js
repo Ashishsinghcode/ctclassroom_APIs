@@ -40,7 +40,7 @@ function add_test(req,res){
                     console.log(subjectdata)
                         let testobj = Test()
                         testobj.semester_id= subjectdata.semester_id
-                        testobj.teacher_id= subjectdata.teacher_id
+                        testobj.teacher_name= req.body.teacher_name
                         testobj.subject_id= subjectdata._id
                         testobj.title= req.body.title.toUpperCase()
                         testobj.link= req.body.link

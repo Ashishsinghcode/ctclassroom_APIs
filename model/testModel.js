@@ -2,7 +2,7 @@ const mongo = require('mongoose')
 
 const testSchema = mongo.Schema({
     'semester_id':{type:mongo.Schema.Types.ObjectId, ref:'semester', default:''},
-    'teacher_id':{type:mongo.Schema.Types.ObjectId, ref:'teacher', default:''},
+    'teacher_name':{type:String, default:''},
     'subject_id':{type:mongo.Schema.Types.ObjectId, ref:'subject', default:''},
     'title':{type:String, default:''},
     'link':{type:String, default:''},

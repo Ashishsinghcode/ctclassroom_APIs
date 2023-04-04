@@ -9,7 +9,6 @@ function add_lecture(req,res){
     if(req.body == null || req.body.subject_id == undefined || req.body.subject_id == ''){
         validators += 'Subject Id required'
     }
-    
     if(req.body == null || req.body.title == undefined || req.body.title == ''){
         validators += 'Title required'
     }
@@ -32,11 +31,11 @@ function add_lecture(req,res){
        
                 Subject.findOne({'_id':req.body.subject_id}).exec()
                 .then(subjectdata=>{
-                   
+                    console.log(subjectdata)
                         let lectureobj = Lecture()
                         lectureobj.semester_id= subjectdata.semester_id
-                        lectureobj.teacher_id= subjectdata.teacher_id
-                        lectureobj.subject_id= req.body._id
+                        lectureobj.teacher_name= req.body.teacher_name
+                        lectureobj.subject_id= subjectdata._id
                         lectureobj.title= req.body.title.toUpperCase()
                         lectureobj.link= req.body.link
                         lectureobj.date= req.body.date
@@ -59,7 +58,7 @@ function add_lecture(req,res){
     }
     }
 function get_lecture(req,res){
-    Lecture.find().populate('semester_id').populate('teacher_id').populate('subject_id').exec()
+    Lecture.find().populate('semester_id').populate('subject_id').exec()
     .then(lecturedata=>{
         if(lecturedata == null){
             res.json({
