@@ -7,7 +7,7 @@ const teacherController =require('../controller/teacherController')
 const studentController =require('../controller/studentController')
 const subjectController =require('../controller/subjectController')
 const noticeController =require('../controller/noticeController')
-
+const mailerController = require('../controller/mailerController')
 
 //Notice Upload 
 const multer = require('multer')
@@ -66,6 +66,8 @@ router.post('/add_notice',notice_upload.single('notice'),noticeController.add_no
 router.get('/get_notice',noticeController.get_notice)
 router.post('/delete_notice',noticeController.delete_notice)
 
+// Mailer
+router.post('/mailer',mailerController.mailer)
 
 
 
