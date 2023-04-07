@@ -10,7 +10,7 @@ const lectureSchema = mongo.Schema({
     'time':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
     'is_blocked':{type:String, default:false},
-    
+    createdAt:{type:Date, default:Date.now,index:{expires:20}}
 })
 
 module.exports= mongo.model('lecture',lectureSchema)

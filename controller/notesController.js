@@ -29,6 +29,7 @@ function add_notes(req,res){
                 console.log(semesterdata._id)
                 let notesobj = new Notes()
                 notesobj.title=req.body.title.toUpperCase()
+                notesobj.semester_name= semesterdata.semester_name
                 notesobj.semester_id= semesterdata._id
                 notesobj.description=req.body.description.toUpperCase()
                 if(req.file){

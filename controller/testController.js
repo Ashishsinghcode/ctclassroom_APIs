@@ -21,12 +21,10 @@ function add_test(req,res){
     if(req.body == null || req.body.date == undefined || req.body.date == ''){
         validators += 'Date required'
     }
-    if(req.body == null || req.body.start_time == undefined || req.body.start_time == ''){
-        validators += 'Start time required'
+    if(req.body == null || req.body.duration == undefined || req.body.duration == ''){
+        validators += 'Test duration required'
     }
-    if(req.body == null || req.body.end_time == undefined || req.body.end_time == ''){
-        validators += 'End time required'
-    }
+    
     if(!!validators){
         res.json({
             'status':422,
@@ -35,19 +33,19 @@ function add_test(req,res){
         })
     }else{
        
-                Subject.findOne({'_id':req.body._id}).exec()
+                Subject.findOne({'_id':req.body._id}).populate('semester_id').exec()
                 .then(subjectdata=>{
-                    console.log(subjectdata)
+                    console.log()
                         let testobj = Test()
                         testobj.semester_id= subjectdata.semester_id
+                        testobj.semester_name= subjectdata.semester_id['semester_name']
                         testobj.teacher_name= req.body.teacher_name
                         testobj.subject_id= subjectdata._id
                         testobj.title= req.body.title.toUpperCase()
                         testobj.link= req.body.link
                         testobj.full_marks= req.body.full_marks
                         testobj.date= req.body.date
-                        testobj.start_time= req.body.start_time
-                        testobj.end_time= req.body.end_time
+                        testobj.duration= req.body.duration
                         testobj.save()
                         res.json({
                             'status':200,

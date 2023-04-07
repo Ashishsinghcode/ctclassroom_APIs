@@ -28,6 +28,7 @@ function add_assignment(req,res){
                 console.log(semesterdata._id)
                 let assignmentobj = new Assignment()
                 assignmentobj.title=req.body.title.toUpperCase()
+                assignmentobj.semester_name= semesterdata.semester_name
                 assignmentobj.semester_id= semesterdata._id
                 assignmentobj.description=req.body.description.toUpperCase()
                 assignmentobj.assign_date=req.body.assign_date.toUpperCase()
