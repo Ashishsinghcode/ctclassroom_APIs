@@ -161,12 +161,34 @@ function delete_subject(req,res){
                 })
                 
             }else{
-                Subject.deleteOne({'_id':req.body._id}).exec()
-                res.json({
-                    'status':200,
-                    'success':true,
-                    'message':'Subject Deleted Successfully'
-                })
+                if(subjectdata.is_blocked == "Unblocked")
+                {
+                    subjectdata.department_id=subjectdata.department_id
+                    subjectdata.course_id=subjectdata.course_id
+                    subjectdata.semester_id=subjectdata.semester_id
+                    subjectdata.teacher_id=subjectdata.teacher_id
+                    subjectdata.is_blocked = "Blocked"
+                    subjectdata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Subject Blocked Successfully',
+                        'message':'Blocked'
+                    })
+                }else{
+                    subjectdata.department_id=subjectdata.department_id
+                    subjectdata.course_id=subjectdata.course_id
+                    subjectdata.semester_id=subjectdata.semester_id
+                    subjectdata.teacher_id=subjectdata.teacher_id
+                    subjectdata.is_blocked = "Unblocked"
+                    subjectdata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Subject Retrived Successfully',
+                        'message':'Retrived'
+                    })
+                }
             }
         })
         .catch(err=>{

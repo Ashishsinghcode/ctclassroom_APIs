@@ -1,12 +1,13 @@
-const Subject = require('../model/subjectModel')
+const Semester = require('../model/semesterModel')
 const Test = require('../model/testModel')
 
 
 function add_test(req,res){
+    console.log(req.body)
     let validators =''
    
-    if(req.body == null || req.body._id == undefined || req.body._id == ''){
-        validators += 'Subject_id required'
+    if(req.body == null || req.body.semester_id == undefined || req.body.semester_id == ''){
+        validators += 'Semester_id required'
     }
     
     if(req.body == null || req.body.title == undefined || req.body.title == ''){
@@ -15,8 +16,8 @@ function add_test(req,res){
     if(req.body == null || req.body.link == undefined || req.body.link == ''){
         validators += 'Link required'
     }
-    if(req.body == null || req.body.full_marks == undefined || req.body.full_marks == ''){
-        validators += 'Full marks required'
+    if(req.body == null || req.body.marks == undefined || req.body.marks == ''){
+        validators += 'marks required'
     }
     if(req.body == null || req.body.date == undefined || req.body.date == ''){
         validators += 'Date required'
@@ -33,17 +34,16 @@ function add_test(req,res){
         })
     }else{
        
-                Subject.findOne({'_id':req.body._id}).populate('semester_id').exec()
-                .then(subjectdata=>{
-                    console.log()
-                        let testobj = Test()
-                        testobj.semester_id= subjectdata.semester_id
-                        testobj.semester_name= subjectdata.semester_id['semester_name']
-                        testobj.teacher_name= req.body.teacher_name
-                        testobj.subject_id= subjectdata._id
+                Semester.findOne({'_id':req.body.semester_id}).exec()
+                .then(semesterdata=>{
+                    console.log(semesterdata)
+                        let testobj = new Test()
+                        testobj.semester_id= semesterdata._id
+                        testobj.semester_name= semesterdata.semester_name
                         testobj.title= req.body.title.toUpperCase()
+                        testobj.description= req.body.description.toUpperCase()
                         testobj.link= req.body.link
-                        testobj.full_marks= req.body.full_marks
+                        testobj.full_marks= req.body.marks
                         testobj.date= req.body.date
                         testobj.duration= req.body.duration
                         testobj.save()
@@ -64,8 +64,9 @@ function add_test(req,res){
     }
     }
 function get_test(req,res){
-    Test.find().populate('teacher_id').populate('subject_id').populate('semester_id').exec()
+    Test.find().exec()
     .then(testdata=>{
+        console.log(testdata)
         if(testdata == null){
             res.json({
                 'status':200,

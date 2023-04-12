@@ -106,9 +106,9 @@ function delete_department(req,res){
                 })
                 
             }else{
-                if(dep_data.is_blocked == "false")
+                if(dep_data.is_blocked == "Unblocked")
                 {
-                    dep_data.is_blocked = true
+                    dep_data.is_blocked = "Blocked"
                     dep_data.save()
                     res.json({
                         'status':200,
@@ -117,7 +117,7 @@ function delete_department(req,res){
                         'message':'Deleted'
                     })
                 }else{
-                    dep_data.is_blocked = false
+                    dep_data.is_blocked = "Unblocked"
                     dep_data.save()
                     res.json({
                         'status':200,

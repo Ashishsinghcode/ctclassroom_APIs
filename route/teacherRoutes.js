@@ -4,6 +4,7 @@ const assignmentController =require('../controller/assignmentController')
 const lectureController =require('../controller/lectureController')
 const testController =require('../controller/testController')
 const attendenceController =require('../controller/attendenceController')
+const videoController = require('../controller/videoController') 
 
 //Notes Upload 
 const multer = require('multer')
@@ -58,6 +59,10 @@ router.post('/add_test',testController.add_test)
 router.get('/get_test',testController.get_test)
 router.post('/delete_test',testController.delete_test)
 
+// Video API
+router.post('/add_video',videoController.add_video)
+router.get('/get_video',videoController.get_video)
+router.post('/delete_video',videoController.delete_video)
 // Attendence
 router.post('/get_student_list',attendenceController.get_student_list)
 

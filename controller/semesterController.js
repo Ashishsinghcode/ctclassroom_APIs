@@ -122,12 +122,30 @@ function delete_semester(req,res){
                 })
                 
             }else{
-                Semester.deleteOne({'_id':req.body._id}).exec()
-                res.json({
-                    'status':200,
-                    'success':true,
-                    'msg':'Semester Deleted Successfully'
-                })
+                if(semesterdata.is_blocked == "Unblocked")
+                {
+                    semesterdata.department_id=semesterdata.department_id
+                    semesterdata.course_id=semesterdata.course_id
+                    semesterdata.is_blocked = "Blocked"
+                    semesterdata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Semester Blocked Successfully',
+                        'message':'Blocked'
+                    })
+                }else{
+                    semesterdata.course_id=semesterdata.course_id
+                    semesterdata.department_id=semesterdata.department_id
+                    semesterdata.is_blocked = "Unblocked"
+                    semesterdata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Semester Retrived Successfully',
+                        'message':'Retrived'
+                    })
+                }
             }
         })
         .catch(err=>{

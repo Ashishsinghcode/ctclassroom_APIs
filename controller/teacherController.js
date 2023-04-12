@@ -185,7 +185,7 @@ function add_teacher(req,res){
                             teacherdata.email=req.body.email.toUpperCase(),
                             teacherdata.contact=req.body.contact,
                             teacherdata.qualification=req.body.qualification.toUpperCase(),
-                            teacherdata.is_blocked=req.body.is_blocked.toUpperCase()
+                            teacherdata.is_blocked=req.body.is_blocked
                             teacherdata.save()
                             res.json({
                                 'status':200,

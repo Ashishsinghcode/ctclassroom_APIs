@@ -67,7 +67,7 @@ router.get('/get_notice',noticeController.get_notice)
 router.post('/delete_notice',noticeController.delete_notice)
 
 // Mailer
-router.post('/mailer',mailerController.mailer)
+//router.post('/mailer',mailerController.mailer)
 
 
 

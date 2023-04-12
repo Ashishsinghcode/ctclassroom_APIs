@@ -109,9 +109,9 @@ function delete_course(req,res){
             'msg':'Please Enter ID'
         })
     }else{
-        console.log(req.body._id)
         Course.findOne({'_id':req.body._id}).exec()
-        .then(coursedata=>{
+        .then(coursedata=>{  
+            // console.log(coursedata) 
             if(coursedata == null){
                 res.json({
                     'status':200,
@@ -120,14 +120,31 @@ function delete_course(req,res){
                 })
                 
             }else{
-                Course.deleteOne({'_id':req.body._id}).exec()
-                res.json({
-                    'status':200,
-                    'success':true,
-                    'msg':'Course Deleted Successfully'
-                })
+                if(coursedata.is_blocked == "false")
+                {
+                    coursedata.department_id=coursedata.department_id
+                    coursedata.is_blocked = "Blocked"
+                    coursedata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Course Blocked Successfully',
+                        'message':'Blocked'
+                    })
+                }else{
+                    coursedata.department_id=coursedata.department_id
+                    coursedata.is_blocked = "Unblocked"
+                    coursedata.save()
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'Course Retrived Successfully',
+                        'message':'Retrived'
+                    })
+                }
             }
         })
+            
         .catch(err=>{
             res.json({
             'status':500,
