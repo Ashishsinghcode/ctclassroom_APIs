@@ -7,7 +7,7 @@ const atttendenceSchema = mongo.Schema({
     'student_name':{type:String, default:''},
     'attendence':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

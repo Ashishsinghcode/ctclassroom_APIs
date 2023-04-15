@@ -5,7 +5,7 @@ const courseSchema = mongo.Schema({
     'course_id':{type:String, default:''},
     'course_name':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

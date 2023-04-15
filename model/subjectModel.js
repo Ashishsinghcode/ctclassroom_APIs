@@ -8,7 +8,7 @@ const subjectSchema = mongo.Schema({
     'subject_id':{type:String, default:''},
     'subject_name':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

@@ -9,7 +9,7 @@ const lectureSchema = mongo.Schema({
     'date':{type:String, default:''},
     'time':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     createdAt:{type:Date, default:Date.now,index:{expires:20}}
 })
 

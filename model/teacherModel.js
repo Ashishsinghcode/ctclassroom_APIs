@@ -9,7 +9,7 @@ const teacherSchema = mongo.Schema({
     'contact':{type:Number, default:0},
     'password':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:'UNBLOCKED'},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

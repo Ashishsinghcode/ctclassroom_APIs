@@ -6,7 +6,7 @@ const videoSchema = mongo.Schema({
     'description':{type:String, default:''},
     'link':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

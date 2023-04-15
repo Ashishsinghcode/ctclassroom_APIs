@@ -46,11 +46,11 @@ function add_department(req,res){
 
         })
             .catch((err)=>{
-                res.json({
-                'status':500,
-                'success':false,
-                'msg':String(err),
-                })
+                // res.json({
+                // 'status':500,
+                // 'success':false,
+                // 'msg':String(err),
+                // })
             
             })
     }
@@ -77,11 +77,11 @@ function get_department(req,res){
 
     })
     .catch(err=>{
-        res.json({
-            'status':500,
-            'success':false,
-            'msg':String(err)
-        })
+        // res.json({
+        //     'status':500,
+        //     'success':false,
+        //     'msg':String(err)
+        // })
     })
 }
 function delete_department(req,res){

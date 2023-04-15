@@ -1,12 +1,12 @@
-const User = require('../model/userModel')
+const Admin = require('../model/adminModel')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 exports.insertadmin=()=>{
-    User.findOne({'email':'ADMIN@GMAIL.COM'}).exec()
+    Admin.findOne({'email':'ADMIN@GMAIL.COM'}).exec()
     .then(data=>{
         if(data == null){
-            let adminObj = User()
+            let adminObj = Admin()
             adminObj.email='ADMIN@GMAIL.COM'
             adminObj.name='ADMIN'
             adminObj.password=bcrypt.hashSync('admin@123',saltRounds)

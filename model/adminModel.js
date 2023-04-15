@@ -1,6 +1,6 @@
 const mongo = require('mongoose')
 
-const userSchema = mongo.Schema({
+const adminSchema = mongo.Schema({
 
     'name':{type:String, default:''},
     'email':{type:String, default:''},
@@ -10,4 +10,4 @@ const userSchema = mongo.Schema({
     
 })
 
-module.exports= mongo.model('user',userSchema)
+module.exports= mongo.model('admin',adminSchema)

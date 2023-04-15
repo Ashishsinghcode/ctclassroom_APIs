@@ -120,7 +120,7 @@ function delete_course(req,res){
                 })
                 
             }else{
-                if(coursedata.is_blocked == "false")
+                if(coursedata.is_blocked == "Unblocked")
                 {
                     coursedata.department_id=coursedata.department_id
                     coursedata.is_blocked = "Blocked"

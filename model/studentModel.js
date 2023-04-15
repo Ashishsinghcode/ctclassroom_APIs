@@ -11,7 +11,7 @@ const studentSchema = mongo.Schema({
     'password':{type:String, default:''},
     'contact':{type:Number, default:0},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:'UNBLOCKED'},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

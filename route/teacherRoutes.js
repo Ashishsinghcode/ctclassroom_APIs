@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const userController = require('../controller/userController')
 const notesController =require('../controller/notesController')
 const assignmentController =require('../controller/assignmentController')
 const lectureController =require('../controller/lectureController')
@@ -39,6 +40,12 @@ const assignmentstorage = multer.diskStorage({
   const assignment_upload = multer({ storage: assignmentstorage })
 // End assignment upload
 
+// Login API
+router.post('/teacherLogin',userController.teacherLogin)
+
+//Middleware
+router.use(require('../common/teacherMiddleware'))
+
 //Notes API
 router.post('/add_notes',notes_upload.single('notes'),notesController.add_notes)
 router.get('/get_notes',notesController.get_notes)
@@ -63,9 +70,6 @@ router.post('/delete_test',testController.delete_test)
 router.post('/add_video',videoController.add_video)
 router.get('/get_video',videoController.get_video)
 router.post('/delete_video',videoController.delete_video)
-// Attendence
-router.post('/get_student_list',attendenceController.get_student_list)
-
 
 
 

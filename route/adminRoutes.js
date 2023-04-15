@@ -29,6 +29,7 @@ const noticestorage = multer.diskStorage({
 // Login API
 router.post('/login',userController.login)
 
+router.use(require('../common/adminMiddleware'))
 // Department API
 router.post('/add_department',departmentController.add_department)
 router.get('/get_department',departmentController.get_department)

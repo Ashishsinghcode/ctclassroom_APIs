@@ -1,20 +1,17 @@
 const jwt= require('jsonwebtoken')
-const adminprivatekey= "admin@123"
+const privatekey= "admin@123"
 
-
-module.exports =(req,res,next)=>{
-   
+module.exports= (req,res,next)=>{
+    
     const token = req.headers['authorization'];
-      
+    
     if(token)
     {
-       a= jwt.verify(token,adminprivatekey)
-         console.log(a)   
+        jwt.verify(token,privatekey,function(err,decode){
            
-
-            
+           
             next()
-       
+        })
     }else{
         res.json({
             'status':403,

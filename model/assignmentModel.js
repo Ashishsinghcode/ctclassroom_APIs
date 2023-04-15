@@ -9,7 +9,7 @@ const assignmentSchema = mongo.Schema({
     'assign_date':{type:String, default:''},
     'submission_date':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 

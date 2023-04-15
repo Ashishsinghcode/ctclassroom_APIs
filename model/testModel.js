@@ -10,7 +10,7 @@ const testSchema = mongo.Schema({
     'full_marks':{type:Number, default:0},
     'duration':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
 
 })
 

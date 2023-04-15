@@ -6,7 +6,7 @@ const semesterSchema = mongo.Schema({
     'semester_id':{type:String, default:''},
     'semester_name':{type:String, default:''},
     'created_at':{type:Date, default:Date.now()},
-    'is_blocked':{type:String, default:false},
+    'is_blocked':{type:String, default:'Unblocked'},
     
 })
 
