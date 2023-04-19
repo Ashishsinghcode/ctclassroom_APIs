@@ -17,6 +17,7 @@ const database = require('./config/ctclassroom')
 admin.insertadmin()
 server.use('/ct',adminroutes)
 server.use('/teacher',teacherroutes)
+server.use('/student',studentroutes)
 // server.use('/ct',studentroutes)
 
 server.listen(port, ()=> console.log("Server Running at port"+port))

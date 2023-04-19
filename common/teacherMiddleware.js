@@ -8,9 +8,7 @@ module.exports= (req,res,next)=>{
     if(token)
     {
         jwt.verify(token,privatekey,function(err,decode){
-           
-           
-            next()
+           next()
         })
     }else{
         res.json({

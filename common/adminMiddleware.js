@@ -8,13 +8,8 @@ module.exports =(req,res,next)=>{
       
     if(token)
     {
-       a= jwt.verify(token,adminprivatekey)
-         console.log(a)   
-           
-
-            
+       a= jwt.verify(token,adminprivatekey) 
             next()
-       
     }else{
         res.json({
             'status':403,
