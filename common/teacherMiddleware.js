@@ -8,8 +8,17 @@ module.exports= (req,res,next)=>{
     if(token)
     {
         jwt.verify(token,privatekey,function(err,decode){
-           next()
-        })
+            if(err){
+                res.json({
+                    'status':401,
+                    'success': false,
+                    'msg':'Unauthorize User'
+        
+                })    
+            }else{
+                next()
+            }
+           }) 
     }else{
         res.json({
             'status':403,

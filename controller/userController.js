@@ -5,7 +5,6 @@ const Student = require('../model/studentModel')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt= require('jsonwebtoken');
-const userModel = require('../model/userModel');
 const privatekey= "admin@123"
 
 
@@ -30,7 +29,7 @@ function login(req,res){
                     'name':admindata.name,
                     'designation':"admin"
                 }
-                const token = jwt.sign(payload,privatekey,{expiresIn:60*20})
+                const token = jwt.sign(payload,privatekey)
                 res.json({
                     'status':200,
                     'success':true,
@@ -60,7 +59,7 @@ function login(req,res){
 } 
 function teacherLogin(req,res){
 
-    Teacher.findOne({'email':req.body.email.toUpperCase()}).exec()
+    Teacher.findOne({$and: [{'email':req.body.email.toUpperCase()},{'is_blocked':'Unblocked'}]}).exec()
     .then(teacherdata=>{
       
         if(teacherdata == null){
@@ -123,7 +122,7 @@ function teacherLogin(req,res){
 } 
 function studentLogin(req,res){
 
-    Student.findOne({'email':req.body.email.toUpperCase()}).exec()
+    Student.findOne({$and: [{'email':req.body.email.toUpperCase()},{'is_blocked':'Unblocked'}]}).exec()
     .then(studentdata=>{
       
         if(studentdata == null){

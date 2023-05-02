@@ -19,6 +19,7 @@ function add_notice(req,res){
         })
     }
     else {
+        console.log(req)
                 let noticeobj = new Notice()
                 noticeobj.title=req.body.title.toUpperCase()
                 noticeobj.description=req.body.description.toUpperCase()

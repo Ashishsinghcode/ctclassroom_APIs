@@ -24,11 +24,14 @@ const noticestorage = multer.diskStorage({
     }
   })
   const notice_upload = multer({ storage: noticestorage })
+  
 // End Notice upload
 
 // Login API
 router.post('/login',userController.login)
+router.post('/mailer',notice_upload.single('notice'),mailerController.mailer)
 
+router.get('/get_student',studentController.get_student)
 router.use(require('../common/adminMiddleware'))
 // Department API
 router.post('/add_department',departmentController.add_department)
@@ -58,7 +61,6 @@ router.post('/delete_subject',subjectController.delete_subject)
 
 // Student API
 router.post('/add_student',studentController.add_student)
-router.get('/get_student',studentController.get_student)
 router.post('/get_single_student',studentController.get_single_student)
 router.post('/update_student',studentController.update_student)
 
@@ -67,8 +69,6 @@ router.post('/add_notice',notice_upload.single('notice'),noticeController.add_no
 router.get('/get_notice',noticeController.get_notice)
 router.post('/delete_notice',noticeController.delete_notice)
 
-// Mailer
-//router.post('/mailer',mailerController.mailer)
 
 
 
