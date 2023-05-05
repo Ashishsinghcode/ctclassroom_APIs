@@ -2,6 +2,7 @@ const mongo = require('mongoose')
 
 const assignmentSchema = mongo.Schema({
     'semester_id':{type:mongo.Schema.Types.ObjectId, ref:'semester', default:''},
+    'teacher_id':{type:mongo.Schema.Types.ObjectId, ref:'teacher', default:''},
     'title':{type:String, default:1},
     'semester_name':{type:String, default:''},
     'description':{type:String, default:''},

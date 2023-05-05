@@ -267,11 +267,58 @@ function add_student(req,res){
             })
         }
     }  
+    function get_student_by_email(req,res){
+        console.log(req.body.email)
+        let validators=''
+        if(req.body == null || req.body.email == undefined || req.body.email == '' ){
+           validators += 'Email required'
+            
+        }
+        
+        if(!!validators){
+            res.json({
+                'status':422,
+                'success':false,
+                'msg':validators
+            })
+        }
+        else{
+
+            Student.findOne({'email':req.body.email.toUpperCase()}).exec()
+            .then(studentdata=>{
+                
+                if(studentdata == null ){
+                    res.json({
+                        'status':200,
+                        'success':false,
+                        'msg':'Student not exists'
+                    })    
+                }else{
+                    
+                    res.json({
+                        'status':200,
+                        'success':false,
+                        'msg':'Student loaded',
+                        'data':studentdata
+                    })
+                }
+                
+            })
+            .catch(err=>{
+                res.json({
+                    'status':500,
+                    'success':false,
+                    'msg':String(err)
+                })
+            })
+        }
+    }
 module.exports={
     add_student,
     get_student,
     update_student,
-    get_single_student
+    get_single_student,
+    get_student_by_email
     
     
 }

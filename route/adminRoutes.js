@@ -8,6 +8,7 @@ const studentController =require('../controller/studentController')
 const subjectController =require('../controller/subjectController')
 const noticeController =require('../controller/noticeController')
 const mailerController = require('../controller/mailerController')
+const otpController = require('../controller/otpController')
 
 //Notice Upload 
 const multer = require('multer')
@@ -26,8 +27,14 @@ const noticestorage = multer.diskStorage({
   const notice_upload = multer({ storage: noticestorage })
   
 // End Notice upload
+//get student by email
+
+
+router.post('/get_student_by_email',studentController.get_student_by_email)
+router.post('/verify_otp',otpController.verify_otp)
 
 // Login API
+router.post('/otp',otpController.send_otp)
 router.post('/login',userController.login)
 router.post('/mailer',notice_upload.single('notice'),mailerController.mailer)
 

@@ -1,5 +1,6 @@
 const Assignment = require('../model/assignmentModel')
 const Semester = require('../model/semesterModel')
+const Teacher = require('../model/teacherModel')
 
 function add_assignment(req,res){
     let validators=''
@@ -15,6 +16,10 @@ function add_assignment(req,res){
        validators += 'Semester required'
     
     }
+    if(req.body == null || req.body.teacher_id == undefined || req.body.teacher_id == '' ){
+       validators += 'Teacher required'
+    
+    }
     if(!!validators){
         res.json({
             'status':422,
@@ -23,6 +28,7 @@ function add_assignment(req,res){
         })
     }
     else {
+
             Semester.findOne({'_id':req.body.semester_id}).exec()
             .then(semesterdata=>{
                 console.log(semesterdata._id)
@@ -30,6 +36,7 @@ function add_assignment(req,res){
                 assignmentobj.title=req.body.title.toUpperCase()
                 assignmentobj.semester_name= semesterdata.semester_name
                 assignmentobj.semester_id= semesterdata._id
+                assignmentobj.teacher_id= req.body.teacher_id
                 assignmentobj.description=req.body.description.toUpperCase()
                 assignmentobj.assign_date=req.body.assign_date.toUpperCase()
                 assignmentobj.submission_date=req.body.submission_date.toUpperCase()

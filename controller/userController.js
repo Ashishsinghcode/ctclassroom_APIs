@@ -89,7 +89,8 @@ function teacherLogin(req,res){
                         'message':'Login Successfully',
                         'token':token,
                         'name':userdata.name,
-                        'email':userdata.email
+                        'email':userdata.email,
+                        'teacher_id':teacherdata._id
     
                     })    
                 }else{
@@ -151,7 +152,8 @@ function studentLogin(req,res){
                         'token':token,
                         'name':userdata.name,
                         'email':userdata.email,
-                        'semester_id':studentdata.semester_id
+                        'semester_id':studentdata.semester_id,
+                        'student_id':studentdata._id
                        
     
                     })    
