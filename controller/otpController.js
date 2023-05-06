@@ -33,7 +33,7 @@ function send_otp(req,res){
             };
             fast2sms.sendMessage(options)
             .then((res)=>{
-                console.log(res)
+                
             })
             .catch((err)=>{
                 console.log(err)

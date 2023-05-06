@@ -143,7 +143,8 @@ function add_student(req,res){
 
     
     function get_student(req,res){
-        Student.find(req.body._id).populate('department_id').populate('course_id').populate('semester_id').exec()
+        var mysort ={ semester_name : 1}
+        Student.find(req.body._id).populate('department_id').populate('course_id').populate('semester_id').sort(mysort).exec()
         .then(studentdata=>{
             if(studentdata == null){
                 res.json({
@@ -297,7 +298,7 @@ function add_student(req,res){
                     
                     res.json({
                         'status':200,
-                        'success':false,
+                        'success':true,
                         'msg':'Student loaded',
                         'data':studentdata
                     })

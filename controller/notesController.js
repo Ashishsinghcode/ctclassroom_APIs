@@ -26,7 +26,7 @@ function add_notes(req,res){
     else {
             Semester.findOne({'_id':req.body.semester_id}).exec()
             .then(semesterdata=>{
-                console.log(semesterdata._id)
+               
                 let notesobj = new Notes()
                 notesobj.title=req.body.title.toUpperCase()
                 notesobj.semester_name= semesterdata.semester_name

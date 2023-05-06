@@ -30,6 +30,7 @@ const noticestorage = multer.diskStorage({
 //get student by email
 
 
+router.post('/get_teacher_by_email',teacherController.get_teacher_by_email)
 router.post('/get_student_by_email',studentController.get_student_by_email)
 router.post('/verify_otp',otpController.verify_otp)
 

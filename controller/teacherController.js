@@ -218,11 +218,58 @@ function add_teacher(req,res){
             })
         }
     }  
+    function get_teacher_by_email(req,res){
+        console.log(req.body.email)
+        let validators=''
+        if(req.body == null || req.body.email == undefined || req.body.email == '' ){
+           validators += 'Email required'
+            
+        }
+        
+        if(!!validators){
+            res.json({
+                'status':422,
+                'success':false,
+                'msg':validators
+            })
+        }
+        else{
+
+            Teacher.findOne({'email':req.body.email.toUpperCase()}).exec()
+            .then(teacherdata=>{
+                
+                if(teacherdata == null ){
+                    res.json({
+                        'status':200,
+                        'success':false,
+                        'msg':'Teacher not exists'
+                    })    
+                }else{
+                    
+                    res.json({
+                        'status':200,
+                        'success':true,
+                        'msg':'',
+                        'data':teacherdata
+                    })
+                }
+                
+            })
+            .catch(err=>{
+                res.json({
+                    'status':500,
+                    'success':false,
+                    'msg':String(err)
+                })
+            })
+        }
+    }
 module.exports={
     add_teacher,
     get_teacher,
     update_teacher,
-    get_single_teacher
+    get_single_teacher,
+    get_teacher_by_email
     
     
 }

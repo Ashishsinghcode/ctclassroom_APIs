@@ -113,8 +113,8 @@ function delete_department(req,res){
                     res.json({
                         'status':200,
                         'success':true,
-                        'msg':'Department Deleted Successfully',
-                        'message':'Deleted'
+                        'msg':'Department Blocked Successfully',
+                        'message':'Blocked'
                     })
                 }else{
                     dep_data.is_blocked = "Unblocked"
