@@ -31,7 +31,7 @@ function add_assignment(req,res){
 
             Semester.findOne({'_id':req.body.semester_id}).exec()
             .then(semesterdata=>{
-                console.log(semesterdata._id)
+               
                 let assignmentobj = new Assignment()
                 assignmentobj.title=req.body.title.toUpperCase()
                 assignmentobj.semester_name= semesterdata.semester_name

@@ -31,7 +31,7 @@ function add_lecture(req,res){
        
                 Subject.findOne({'_id':req.body.subject_id}).exec()
                 .then(subjectdata=>{
-                    console.log(subjectdata)
+                    
                         let lectureobj = Lecture()
                         lectureobj.semester_id= subjectdata.semester_id
                         lectureobj.teacher_name= req.body.teacher_name

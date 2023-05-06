@@ -29,7 +29,6 @@ function add_video(req,res){
        
                 Semester.findOne({'_id':req.body.semester_id}).exec()
                 .then(semesterdata=>{
-                    console.log(semesterdata)
                         let videoobj =new Video()
                         videoobj.semester_id= semesterdata._id
                         videoobj.title= req.body.title.toUpperCase()

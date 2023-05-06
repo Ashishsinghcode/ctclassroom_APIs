@@ -23,7 +23,7 @@ function add_course(req,res){
         
         Department.findOne({'_id':req.body.department_id}).exec()
         .then(departmentdata=>{
-            console.log(departmentdata)
+            
             if(departmentdata == null){
                 res.json({
                     'status':200,

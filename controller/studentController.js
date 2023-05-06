@@ -93,11 +93,7 @@ function add_student(req,res){
                             'data':'error on student data'
                         })
                     })
-
-
-
-
-                                
+   
                             })
                             .catch(err=>{
                                 res.json({
@@ -125,9 +121,6 @@ function add_student(req,res){
                             'data':'error on student data'
                         })
                     })
-
-                    
-    
                 }
             })
             .catch(err=>{
@@ -241,9 +234,7 @@ function add_student(req,res){
                                 'status':200,
                                 'success':true,
                                 'message':'Student Updated'
-                            })
-                           
-                             
+                            })     
                         }
                     })
                     .catch(err=>{
@@ -252,11 +243,8 @@ function add_student(req,res){
                             'success':false,
                             'message':'erron in user'+String(err)
                         })
-                    })
-                    
-                    
+                    })    
                 })
-            
             .catch(err=>{
                
                     res.json({
@@ -269,7 +257,7 @@ function add_student(req,res){
         }
     }  
     function get_student_by_email(req,res){
-        console.log(req.body.email)
+        
         let validators=''
         if(req.body == null || req.body.email == undefined || req.body.email == '' ){
            validators += 'Email required'

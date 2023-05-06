@@ -3,7 +3,7 @@ const Test = require('../model/testModel')
 
 
 function add_test(req,res){
-    console.log(req.body)
+  
     let validators =''
    
     if(req.body == null || req.body.semester_id == undefined || req.body.semester_id == ''){
@@ -36,7 +36,7 @@ function add_test(req,res){
        
                 Semester.findOne({'_id':req.body.semester_id}).exec()
                 .then(semesterdata=>{
-                    console.log(semesterdata)
+                  
                         let testobj = new Test()
                         testobj.semester_id= semesterdata._id
                         testobj.semester_name= semesterdata.semester_name
@@ -66,7 +66,7 @@ function add_test(req,res){
 function get_test(req,res){
     Test.find().exec()
     .then(testdata=>{
-        console.log(testdata)
+      
         if(testdata == null){
             res.json({
                 'status':200,

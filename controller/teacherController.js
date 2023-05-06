@@ -51,7 +51,7 @@ function add_teacher(req,res){
                     .then(async userdata=>{
                         var teachercount = await Teacher.countDocuments().exec()
                         let teacherObj = Teacher()
-                        console.log(userdata._id)
+                      
                         teacherObj.teacher_id=req.body.teacher_id.toUpperCase()
                         teacherObj.teacher_name=req.body.teacher_name.toUpperCase()
                         teacherObj.email=req.body.email.toUpperCase()
@@ -147,7 +147,7 @@ function add_teacher(req,res){
         })
     }
     function update_teacher(req,res){
-        console.log(req.body._id)
+       
         if(req.body._id == undefined){
             res.json({
                 'status':422,
@@ -179,7 +179,7 @@ function add_teacher(req,res){
                             // console.log(req.body)
                             userdata.email = req.body.email
                             userdata.save()
-                            console.log(req.body)
+                            
                             teacherdata.user_id = teacherdata.user_id                       
                             teacherdata.teacher_name=req.body.teacher_name.toUpperCase(),
                             teacherdata.email=req.body.email.toUpperCase(),
@@ -219,7 +219,7 @@ function add_teacher(req,res){
         }
     }  
     function get_teacher_by_email(req,res){
-        console.log(req.body.email)
+      
         let validators=''
         if(req.body == null || req.body.email == undefined || req.body.email == '' ){
            validators += 'Email required'
