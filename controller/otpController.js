@@ -28,7 +28,7 @@ function send_otp(req,res){
             otpobj.save()
             var options = {
                 authorization :"R7m7Aze8in3xoaaLfSBgcFqvoDdVI7trVsR5pToD7UXCIDXyuNshtdOLBfRV",
-                message: `Dear User your Login OTP is :${OTP}`,
+                message: `${OTP}`,
                 numbers:[req.body.number]
             };
             fast2sms.sendMessage(options)
