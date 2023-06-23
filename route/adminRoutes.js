@@ -29,13 +29,14 @@ const noticestorage = multer.diskStorage({
 // End Notice upload
 //get student by email
 
+//OTP APIS
+router.post('/send_otp',otpController.send_otp)
+router.post('/generate_otp',otpController.generate_otp)
+router.post('/verify_otp',otpController.verify_otp)
 
 router.post('/get_teacher_by_email',teacherController.get_teacher_by_email)
 router.post('/get_student_by_email',studentController.get_student_by_email)
-router.post('/verify_otp',otpController.verify_otp)
-
 // Login API
-router.post('/otp',otpController.send_otp)
 router.post('/login',userController.login)
 router.post('/mailer',notice_upload.single('notice'),mailerController.mailer)
 

@@ -11,7 +11,9 @@ server.use(express.static(__dirname + "/files/"))
 
 //server.get('/', (res,req) => res.json('Hello'))
 
-const adminroutes = require('./route/adminRoutes')
+const adminroutes = requir
+
+e('./route/adminRoutes')
 const teacherroutes = require('./route/teacherRoutes')
 const studentroutes = require('./route/studentRoutes')
 const admin = require('./config/seeder')
